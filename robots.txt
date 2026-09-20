@@ -1,4 +1,1 @@
-User-agent: *
-Allow: /
 
-Sitemap: https://blockrig.site/sitemap.xml
