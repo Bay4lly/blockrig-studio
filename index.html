@@ -10,6 +10,14 @@
     <link rel="canonical" href="https://blockrig.site/" />
     <meta name="theme-color" content="#0a0d12" />
     <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <!-- PWA / Add to Home Screen -->
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="BlockRig" />
 
     <!-- Open Graph (Discord, Twitter, Facebook, LinkedIn) -->
     <meta property="og:title" content="BlockRig Studio - Web 3D Minecraft Rigging & 4K Render" />
@@ -84,8 +92,8 @@
       ]
     }
     </script>
-    <script type="module" crossorigin src="./assets/index-zmnEYv7N.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BDB6ovYF.css">
+    <script type="module" crossorigin src="./assets/index-C5F03X9N.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-KKpu0Fkz.css">
   </head>
   <body>
     <div id="root">
@@ -93,6 +101,13 @@
         <h1>BlockRig Studio — Browser-Based 3D Minecraft Rig & Render Tool</h1>
         <p>Pose 3D Minecraft characters, equip custom items & blocks, use Inverse Kinematics (IK), and export 4K transparent renders or 360° turntable videos directly in your browser without Blender.</p>
       </noscript>
-    </div>
+    </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("./sw.js").catch(function () {});
+        });
+      }
+    </script>
   </body>
 </html>
