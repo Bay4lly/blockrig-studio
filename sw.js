@@ -1,5 +1,4 @@
-/* BlockRig Studio Service Worker — offline-first app shell + cache for static assets */
-const CACHE = "blockrig-studio-v2";
+const CACHE = "blockrig-studio-v3";
 const PRECACHE = [
   "./",
   "./index.html",
