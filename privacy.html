@@ -161,6 +161,14 @@
         font-weight: bold;
       }
 
+      code {
+        background: #1e2632;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #38bdf8;
+        font-size: 13px;
+      }
+
       .disclaimer-box {
         background: #11151c;
         border: 1px dashed var(--border-hover);
@@ -193,17 +201,18 @@
         <span class="last-updated">Last Updated: September 26, 2026</span>
 
         <div class="highlight-box">
-          <strong>In Short:</strong> BlockRig Studio does not collect any personal data, does not require an account, and never uploads your skins or 3D models to remote servers. All 3D rendering and posing occurs entirely on your device.
+          <strong>In Short:</strong> BlockRig Studio does not collect any personal data, does not require an account, has zero tracking or advertising cookies, and never uploads your skins or 3D models to remote servers. Everything runs 100% on your device.
         </div>
 
         <section>
-          <h2>1. Zero Data Collection Policy</h2>
+          <h2>1. Zero Data Collection & No Tracking</h2>
           <p>
-            BlockRig Studio (web application and mobile application) is built with user privacy as a fundamental principle.
+            BlockRig Studio is designed as a private, client-side web and mobile utility:
           </p>
           <ul>
-            <li>No registration, login, name, email address, or phone number is ever requested or collected.</li>
-            <li>We do not track individual users, nor do we sell, rent, or share personal data with any third party.</li>
+            <li>No registration, login, account creation, or email address is ever requested.</li>
+            <li>We do not track users, do not run commercial advertising networks, and do not use advertising or tracking cookies.</li>
+            <li>No personal information is collected, stored, transmitted, or sold to third parties.</li>
           </ul>
         </section>
 
@@ -230,14 +239,13 @@
         </section>
 
         <section>
-          <h2>4. Cookies & Advertising Services</h2>
+          <h2>4. Credits & Acknowledgements</h2>
           <p>
-            To keep BlockRig Studio free and accessible for all creators, trusted third-party advertising partners such as Google AdSense and Google AdMob may be used.
+            Special thanks to <strong>McHorse</strong> for the original <code>.bobj</code> (Blockbuster OBJ) binary model format and core rendering logic.
           </p>
-          <ul>
-            <li>Third-party vendors, including Google, use cookies or mobile advertising identifiers to serve relevant ads based on prior visits to websites.</li>
-            <li>You can opt out of personalized advertising anytime through your browser settings or Google Ad Settings (<a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color: var(--accent);">google.com/settings/ads</a>).</li>
-          </ul>
+          <p>
+            The <code>.bobj</code> parsing architecture and Three.js rendering implementation were ported to modern JavaScript by <strong>Bay4lly</strong> to enable high-performance, real-time Minecraft character posing directly inside web browsers.
+          </p>
         </section>
 
         <section>

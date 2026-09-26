@@ -1,7 +1,7 @@
 /**
  * BlockRig Studio - Render Önizleme ve Dialog Sistemi
  * Render tamamlandığında sonucu modalda gösterir, AndroidBridge veya Web Tarayıcısı üzerinde kaydeder/paylaşır.
- * Türkçe ve İngilizce (TR / EN) çoklu dil desteği içerir.
+ * Dil seçimi (TR / EN) doğrudan sitede/uygulamada seçilen dile göre otomatik belirlenir.
  */
 (function() {
   window.currentRenderData = null;
@@ -17,8 +17,7 @@
       openImage: "Görseli Aç",
       dismiss: "Kapat",
       copySuccess: "Kopyalandı!",
-      copyTooltip: "Konumu Kopyala",
-      nextLang: "EN"
+      copyTooltip: "Konumu Kopyala"
     },
     en: {
       title: "Render Complete",
@@ -30,24 +29,25 @@
       openImage: "View Image",
       dismiss: "Close",
       copySuccess: "Copied!",
-      copyTooltip: "Copy Path",
-      nextLang: "TR"
+      copyTooltip: "Copy Path"
     }
   };
 
-  var currentLang = (function() {
+  function getActiveLanguage(data) {
+    if (data && (data.language === 'tr' || data.language === 'en')) return data.language;
+    if (window.blockrigCurrentLang === 'tr' || window.blockrigCurrentLang === 'en') return window.blockrigCurrentLang;
     try {
-      var saved = localStorage.getItem('blockrig_render_lang');
+      var saved = localStorage.getItem('blockrig_lang');
       if (saved === 'tr' || saved === 'en') return saved;
-      return (navigator.language && navigator.language.toLowerCase().startsWith('tr')) ? 'tr' : 'en';
-    } catch(e) {
-      return 'tr';
-    }
-  })();
+      var renderSaved = localStorage.getItem('blockrig_render_lang');
+      if (renderSaved === 'tr' || renderSaved === 'en') return renderSaved;
+    } catch(e) {}
+    if (navigator.language && navigator.language.toLowerCase().startsWith('tr')) return 'tr';
+    return 'en';
+  }
 
   window.applyRenderModalLang = function(lang) {
     if (!I18N[lang]) lang = 'en';
-    currentLang = lang;
     var t = I18N[lang];
 
     var titleEl = document.getElementById('render-modal-title');
@@ -58,12 +58,6 @@
 
     var locLabelEl = document.getElementById('render-location-label');
     if (locLabelEl) locLabelEl.textContent = t.mobileFolder;
-
-    var langBtn = document.getElementById('render-lang-btn');
-    if (langBtn) {
-      langBtn.textContent = t.nextLang;
-      langBtn.title = (lang === 'tr') ? 'Switch to English' : 'Türkçe\'ye Geç';
-    }
 
     var isAndroid = !!window.AndroidBridge;
     var shareBtnText = document.querySelector('.btn-share .btn-text');
@@ -82,14 +76,6 @@
 
     var copyBtn = document.getElementById('render-copy-btn');
     if (copyBtn) copyBtn.title = t.copyTooltip;
-  };
-
-  window.toggleRenderModalLang = function() {
-    var next = (currentLang === 'tr') ? 'en' : 'tr';
-    try {
-      localStorage.setItem('blockrig_render_lang', next);
-    } catch(e) {}
-    window.applyRenderModalLang(next);
   };
 
   window.showRenderResult = function(data) {
@@ -121,7 +107,6 @@
       var defaultPath = '/storage/emulated/0/BlockRig/Renders/' + data.filename;
       if (pathEl) pathEl.textContent = defaultPath;
 
-      // AndroidBridge üzerinden varsayılan klasöre kaydet
       if (window.AndroidBridge.saveRender) {
         try {
           var resRaw = window.AndroidBridge.saveRender(data.dataUrl, data.filename);
@@ -139,7 +124,6 @@
       if (locationBox) locationBox.style.display = 'none';
       if (pcSuccessBar) pcSuccessBar.style.display = 'flex';
 
-      // Tarayıcı indirmesini tek bir kez başlat
       try {
         var a = document.createElement('a');
         a.href = data.dataUrl;
@@ -150,8 +134,9 @@
       } catch(e) {}
     }
 
-    // Seçili dili modal elemanlarına uygula
-    window.applyRenderModalLang(currentLang);
+    // Modal dilini uygulamanın seçili diline göre ayarla
+    var activeLang = getActiveLanguage(data);
+    window.applyRenderModalLang(activeLang);
 
     modal.style.display = 'flex';
     setTimeout(function() {
@@ -233,12 +218,12 @@
     }
   });
 
-  // Sayfa yüklendiğinde varsayılan dil etiketlerini uygula
+  // Sayfa yüklendiğinde mevcut dile göre ilk ayarı yap
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-      window.applyRenderModalLang(currentLang);
+      window.applyRenderModalLang(getActiveLanguage());
     });
   } else {
-    window.applyRenderModalLang(currentLang);
+    window.applyRenderModalLang(getActiveLanguage());
   }
 })();
