@@ -1,9 +1,96 @@
 /**
  * BlockRig Studio - Render Önizleme ve Dialog Sistemi
  * Render tamamlandığında sonucu modalda gösterir, AndroidBridge veya Web Tarayıcısı üzerinde kaydeder/paylaşır.
+ * Türkçe ve İngilizce (TR / EN) çoklu dil desteği içerir.
  */
 (function() {
   window.currentRenderData = null;
+
+  var I18N = {
+    tr: {
+      title: "Render Tamamlandı",
+      pcSuccess: "Render hazırlandı ve bilgisayarınıza indirildi.",
+      mobileFolder: "Varsayılan Klasöre Kaydedildi",
+      share: "Paylaş",
+      downloadAgain: "Yeniden İndir",
+      openGallery: "Galeride Aç",
+      openImage: "Görseli Aç",
+      dismiss: "Kapat",
+      copySuccess: "Kopyalandı!",
+      copyTooltip: "Konumu Kopyala",
+      nextLang: "EN"
+    },
+    en: {
+      title: "Render Complete",
+      pcSuccess: "Render is ready and downloaded to your computer.",
+      mobileFolder: "Saved to Default Folder",
+      share: "Share",
+      downloadAgain: "Download Again",
+      openGallery: "Open in Gallery",
+      openImage: "View Image",
+      dismiss: "Close",
+      copySuccess: "Copied!",
+      copyTooltip: "Copy Path",
+      nextLang: "TR"
+    }
+  };
+
+  var currentLang = (function() {
+    try {
+      var saved = localStorage.getItem('blockrig_render_lang');
+      if (saved === 'tr' || saved === 'en') return saved;
+      return (navigator.language && navigator.language.toLowerCase().startsWith('tr')) ? 'tr' : 'en';
+    } catch(e) {
+      return 'tr';
+    }
+  })();
+
+  window.applyRenderModalLang = function(lang) {
+    if (!I18N[lang]) lang = 'en';
+    currentLang = lang;
+    var t = I18N[lang];
+
+    var titleEl = document.getElementById('render-modal-title');
+    if (titleEl) titleEl.textContent = t.title;
+
+    var pcTextEl = document.getElementById('render-pc-success-text');
+    if (pcTextEl) pcTextEl.textContent = t.pcSuccess;
+
+    var locLabelEl = document.getElementById('render-location-label');
+    if (locLabelEl) locLabelEl.textContent = t.mobileFolder;
+
+    var langBtn = document.getElementById('render-lang-btn');
+    if (langBtn) {
+      langBtn.textContent = t.nextLang;
+      langBtn.title = (lang === 'tr') ? 'Switch to English' : 'Türkçe\'ye Geç';
+    }
+
+    var isAndroid = !!window.AndroidBridge;
+    var shareBtnText = document.querySelector('.btn-share .btn-text');
+    var openBtnText = document.querySelector('.btn-open .btn-text');
+    var dismissBtnText = document.querySelector('.btn-dismiss .btn-text');
+
+    if (dismissBtnText) dismissBtnText.textContent = t.dismiss;
+
+    if (isAndroid) {
+      if (shareBtnText) shareBtnText.textContent = t.share;
+      if (openBtnText) openBtnText.textContent = t.openGallery;
+    } else {
+      if (shareBtnText) shareBtnText.textContent = (navigator.share ? t.share : t.downloadAgain);
+      if (openBtnText) openBtnText.textContent = t.openImage;
+    }
+
+    var copyBtn = document.getElementById('render-copy-btn');
+    if (copyBtn) copyBtn.title = t.copyTooltip;
+  };
+
+  window.toggleRenderModalLang = function() {
+    var next = (currentLang === 'tr') ? 'en' : 'tr';
+    try {
+      localStorage.setItem('blockrig_render_lang', next);
+    } catch(e) {}
+    window.applyRenderModalLang(next);
+  };
 
   window.showRenderResult = function(data) {
     window.currentRenderData = data;
@@ -14,8 +101,6 @@
     var pathEl = document.getElementById('render-saved-path');
     var locationBox = document.querySelector('.render-location-box');
     var pcSuccessBar = document.querySelector('.render-pc-success-bar');
-    var shareBtnText = document.querySelector('.btn-share .btn-text');
-    var openBtnText = document.querySelector('.btn-open .btn-text');
     var copyIcon = document.getElementById('copy-btn-icon');
     if (copyIcon) copyIcon.textContent = '📋';
 
@@ -32,8 +117,6 @@
       // MOBİL / ANDROID ORTAMI
       if (locationBox) locationBox.style.display = 'block';
       if (pcSuccessBar) pcSuccessBar.style.display = 'none';
-      if (shareBtnText) shareBtnText.textContent = 'Paylaş';
-      if (openBtnText) openBtnText.textContent = 'Galeride Aç';
 
       var defaultPath = '/storage/emulated/0/BlockRig/Renders/' + data.filename;
       if (pathEl) pathEl.textContent = defaultPath;
@@ -53,11 +136,8 @@
       }
     } else {
       // PC / MASAÜSTÜ TARAYICI ORTAMI
-      // Klasör yolu kutusunu gizle (tarayıcı indirme konumunu kullanıcıya bıraktığı için yanıltıcı olmasın)
       if (locationBox) locationBox.style.display = 'none';
       if (pcSuccessBar) pcSuccessBar.style.display = 'flex';
-      if (shareBtnText) shareBtnText.textContent = (navigator.share ? 'Paylaş' : 'Yeniden İndir');
-      if (openBtnText) openBtnText.textContent = 'Görseli Aç';
 
       // Tarayıcı indirmesini tek bir kez başlat
       try {
@@ -69,6 +149,9 @@
         a.remove();
       } catch(e) {}
     }
+
+    // Seçili dili modal elemanlarına uygula
+    window.applyRenderModalLang(currentLang);
 
     modal.style.display = 'flex';
     setTimeout(function() {
@@ -149,4 +232,13 @@
       }
     }
   });
+
+  // Sayfa yüklendiğinde varsayılan dil etiketlerini uygula
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      window.applyRenderModalLang(currentLang);
+    });
+  } else {
+    window.applyRenderModalLang(currentLang);
+  }
 })();

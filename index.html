@@ -92,11 +92,14 @@
           <div class="render-header-left">
             <div class="render-badge-icon">✨</div>
             <div class="render-header-text">
-              <div class="render-modal-title">Render Tamamlandı</div>
+              <div class="render-modal-title" id="render-modal-title">Render Tamamlandı</div>
               <div class="render-modal-subtitle" id="render-res-badge">1920 × 1080 • PNG</div>
             </div>
           </div>
-          <button class="render-close-btn" onclick="closeRenderModal()" aria-label="Kapat">✕</button>
+          <div class="render-header-right">
+            <button class="render-lang-btn" id="render-lang-btn" onclick="toggleRenderModalLang()" title="Dili Değiştir / Switch Language">EN</button>
+            <button class="render-close-btn" onclick="closeRenderModal()" aria-label="Close">✕</button>
+          </div>
         </div>
 
         <!-- Görsel Önizleme (Şeffaf Dama Tahtası) -->
@@ -109,14 +112,14 @@
         <!-- PC İndirme Başarılı Bilgisi -->
         <div class="render-pc-success-bar" style="display: none;">
           <span class="check-icon">✓</span>
-          <span>Render hazırlandı ve bilgisayarınıza indirildi.</span>
+          <span id="render-pc-success-text">Render hazırlandı ve bilgisayarınıza indirildi.</span>
         </div>
 
         <!-- Kaydedilen Dosya Konumu Bilgisi (Android/Mobil) -->
         <div class="render-location-box" style="display: none;">
           <div class="render-location-status">
             <span class="render-status-dot"></span>
-            <span class="render-status-label">Varsayılan Klasöre Kaydedildi</span>
+            <span class="render-status-label" id="render-location-label">Varsayılan Klasöre Kaydedildi</span>
           </div>
           <div class="render-path-row">
             <span class="render-folder-icon">📁</span>
@@ -143,5 +146,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Gizlilik Politikası & Şartlar (AdSense & Google Play Uyumlu) -->
+    <a href="./privacy.html" id="privacy-link" target="_blank" rel="noopener">Privacy Policy • Gizlilik</a>
   </body>
 </html>
