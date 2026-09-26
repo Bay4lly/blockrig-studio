@@ -1,4 +1,4 @@
-const CACHE = "blockrig-studio-v7";
+const CACHE = "blockrig-studio-v8";
 const PRECACHE = [
   "./",
   "./index.html",
