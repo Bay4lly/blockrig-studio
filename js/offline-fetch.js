@@ -4,8 +4,8 @@
  * 2. Yerel dosya sistemi (file://), Android WebView ve model dosyaları (.bobj, .json, .obj) için XHR fetch polyfill
  */
 (function() {
-  // 1. Hash Kontrolü
-  if (!window.location.hash || window.location.hash === '#' || window.location.hash === '') {
+  // 1. Hash Kontrolü: Yalnızca Android WebView ortamında doğrudan stüdyoya (#app) yönlendir
+  if (window.AndroidBridge && (!window.location.hash || window.location.hash === '#' || window.location.hash === '')) {
     window.location.hash = '#app';
   }
 
