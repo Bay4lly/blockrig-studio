@@ -1,0 +1,307 @@
+/* ========================================================= */
+/* BLOCKRIG STUDIO — RENDER PREVIEW MODAL                    */
+/* Blockbench/Studio teması ile %100 uyumlu, flat & modern    */
+/* ========================================================= */
+.render-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 13, 18, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 1000000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.render-modal-backdrop.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.render-modal-card {
+  background: #11151c;
+  border: 1px solid #303b4b;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 500px;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.96) translateY(8px);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.render-modal-backdrop.visible .render-modal-card {
+  transform: scale(1) translateY(0);
+}
+
+.render-modal-header {
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #242e3b;
+  background: #171d27;
+}
+
+.render-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.render-badge-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #1e3a8a;
+  border: 1px solid #3b82f6;
+  color: #8fbfff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+}
+
+.render-modal-title {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f0f4f9;
+  letter-spacing: -0.2px;
+}
+
+.render-modal-subtitle {
+  font-family: inherit;
+  font-size: 11px;
+  color: #9aa7b8;
+  margin-top: 1px;
+}
+
+.render-close-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #9aa7b8;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.render-close-btn:hover {
+  background: #1e2632;
+  color: #fff;
+  border-color: #303b4b;
+}
+
+.render-close-btn:active {
+  background: #ef4444;
+  color: #fff;
+}
+
+.render-preview-container {
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 46vh;
+  min-height: 180px;
+  background: #0a0d12;
+}
+
+.render-preview-checkerboard {
+  width: 100%;
+  height: 100%;
+  max-height: 42vh;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d121a;
+  background-image: 
+    linear-gradient(45deg, #151c27 25%, transparent 25%),
+    linear-gradient(-45deg, #151c27 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #151c27 75%),
+    linear-gradient(-45deg, transparent 75%, #151c27 75%);
+  background-size: 14px 14px;
+  background-position: 0 0, 0 7px, 7px -7px, -7px 0px;
+  border: 1px solid #242e3b;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+#render-preview-img {
+  max-width: 100%;
+  max-height: 38vh;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.45));
+}
+
+/* PC İçin İndirme Başarılı Bilgi Çubuğu */
+.render-pc-success-bar {
+  margin: 0 16px 12px 16px;
+  background: rgba(30, 58, 138, 0.25);
+  border: 1px solid #1e3a8a;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #93c5fd;
+  font-size: 11.5px;
+  font-weight: 500;
+}
+
+.render-pc-success-bar .check-icon {
+  color: #60a5fa;
+  font-size: 14px;
+}
+
+/* Mobil / Android İçin Dosya Konumu Kutusu */
+.render-location-box {
+  margin: 0 16px 12px 16px;
+  background: #171d27;
+  border: 1px solid #242e3b;
+  border-radius: 8px;
+  padding: 9px 12px;
+}
+
+.render-location-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 5px;
+}
+
+.render-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #62c34d;
+}
+
+.render-status-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #74c85c;
+}
+
+.render-path-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0a0d12;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #1e2632;
+}
+
+.render-folder-icon {
+  font-size: 13px;
+}
+
+.render-path-text {
+  font-family: monospace;
+  font-size: 10.5px;
+  color: #cbd5e1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  direction: rtl;
+  text-align: left;
+}
+
+.render-copy-btn {
+  background: #1e2632;
+  border: 1px solid #303b4b;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.render-copy-btn:hover {
+  background: #2563eb;
+  color: #fff;
+  border-color: #3b82f6;
+}
+
+/* Aksiyon Butonları — BlockRig Studio Buton Teması */
+.render-modal-actions {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 16px 16px;
+}
+
+.render-action-btn {
+  flex: 1;
+  height: 34px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.05s;
+  border: 1px solid transparent;
+}
+
+.render-action-btn:active {
+  transform: scale(0.98);
+}
+
+.btn-share {
+  background: #1e3a8a;
+  border-color: #3b82f6 !important;
+  color: #ffffff;
+}
+
+.btn-share:hover {
+  background: #2563eb;
+}
+
+.btn-open {
+  background: #1e2632;
+  border-color: #303b4b !important;
+  color: #e8eef6;
+}
+
+.btn-open:hover {
+  background: #283548;
+}
+
+.btn-dismiss {
+  flex: 0 0 68px;
+  background: #171d27;
+  border-color: #242e3b !important;
+  color: #9aa7b8;
+}
+
+.btn-dismiss:hover {
+  background: #1e2632;
+  color: #fff;
+}

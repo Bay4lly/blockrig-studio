@@ -1,6 +1,20 @@
 /* BlockRig Studio Service Worker — offline-first app shell + cache for static assets */
-const CACHE = "blockrig-studio-v1";
-const PRECACHE = ["./", "./index.html", "./manifest.webmanifest", "./icon-192.png", "./icon-512.png"];
+const CACHE = "blockrig-studio-v2";
+const PRECACHE = [
+  "./",
+  "./index.html",
+  "./manifest.webmanifest",
+  "./icon-192.png",
+  "./icon-512.png",
+  "./css/webview-base.css",
+  "./css/mobile-camera.css",
+  "./css/render-modal.css",
+  "./js/error-handler.js",
+  "./js/offline-fetch.js",
+  "./js/mobile-camera.js",
+  "./js/render-modal.js",
+  "./js/boot-loader.js"
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(

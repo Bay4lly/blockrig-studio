@@ -1,0 +1,126 @@
+/* ========================================================= */
+/* MOBİL ÖZEL KAMERA WASD & OK TUŞLARI KONTROL PANELİ        */
+/* ========================================================= */
+#mobile-camera-controls {
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 16px;
+  z-index: 99999;
+  pointer-events: none;
+}
+
+#mobile-camera-controls.active {
+  display: flex !important;
+}
+
+.dpad-container {
+  display: grid;
+  grid-template-columns: repeat(3, 46px);
+  grid-template-rows: repeat(3, 46px);
+  gap: 6px;
+  background: rgba(15, 20, 28, 0.88);
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: auto;
+}
+
+.elevation-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: rgba(15, 20, 28, 0.88);
+  padding: 8px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: auto;
+}
+
+.cam-btn {
+  width: 46px;
+  height: 46px;
+  background: #1e293b;
+  border: 1px solid #475569;
+  border-radius: 12px;
+  color: #f8fafc;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none !important;
+  transition: transform 0.05s ease, background 0.05s ease;
+}
+
+.cam-btn:active, .cam-btn.pressed {
+  background: #2563eb !important;
+  border-color: #60a5fa !important;
+  color: #ffffff !important;
+  transform: scale(0.92);
+}
+
+.btn-up    { grid-column: 2; grid-row: 1; }
+.btn-left  { grid-column: 1; grid-row: 2; }
+.btn-down  { grid-column: 2; grid-row: 3; }
+.btn-right { grid-column: 3; grid-row: 2; }
+.dpad-center {
+  grid-column: 2; grid-row: 2;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+#cam-toggle-trigger {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 99998;
+  width: 40px;
+  height: 40px;
+  background: rgba(30, 41, 59, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #cbd5e1;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#cam-toggle-trigger.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #93c5fd;
+}
+
+/* PC / Masaüstü ortamında (fiziksel klavye ve fare varken) mobil sanal okları gizle */
+@media (hover: hover) and (pointer: fine) and (min-width: 900px) {
+  #cam-toggle-trigger,
+  #mobile-camera-controls {
+    display: none !important;
+  }
+}

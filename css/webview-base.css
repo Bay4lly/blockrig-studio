@@ -1,0 +1,62 @@
+/* Mobil WebView & Temel Ekran Ayarları */
+html, body {
+  overflow: hidden !important;
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0a0d12;
+}
+
+/* 3D Canvas ve Dokunmatik Ayarları */
+canvas, .viewport, .viewport canvas {
+  touch-action: none !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  user-select: none !important;
+}
+
+/* Sol üstteki brand logosu tıklanamaz */
+.topbar .brand {
+  cursor: default !important;
+  pointer-events: none !important;
+}
+
+/* Boot loader animasyonu */
+@keyframes bootSpin {
+  to { transform: rotate(360deg); }
+}
+
+#boot-loader {
+  position: fixed;
+  inset: 0;
+  background: #0a0d12;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  z-index: 999999;
+}
+
+#boot-loader .spinner {
+  width: 42px;
+  height: 42px;
+  border: 3px solid #1e293b;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: bootSpin 0.7s linear infinite;
+}
+
+#boot-loader .loader-text {
+  margin-top: 16px;
+  font-size: 14px;
+  color: #cbd5e1;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
