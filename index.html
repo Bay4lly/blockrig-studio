@@ -1,173 +1,196 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-    <title>BlockRig Studio</title>
-    <link rel="icon" type="image/png" href="./favicon.png" />
-    <link rel="manifest" href="./manifest.webmanifest" />
 
-    <meta name="description" content="Minecraft ve blok modelleri için ücretsiz, web tabanlı 3D stüdyo. Karakterine poz ver, eşyalar ekle ve 4K ultra HD render al." />
-    <meta name="theme-color" content="#38bdf8" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>BlockRig Studio — Free Minecraft Skin Pose & 3D Character Rig Online</title>
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="canonical" href="https://blockrig.site/" />
 
-    <!-- Open Graph (Discord, Facebook, WhatsApp Banner) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://blockrig.site/" />
-    <meta property="og:title" content="BlockRig Studio - 3D Minecraft Character Posing & Rigging" />
-    <meta property="og:description" content="Minecraft ve blok modelleri için web tabanlı 3D stüdyo. Karakterine poz ver, sahneler yarat ve yüksek çözünürlüklü render al!" />
-    <meta property="og:image" content="https://blockrig.site/og.png" />
-    <meta property="og:image:secure_url" content="https://blockrig.site/og.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="BlockRig Studio Banner" />
+  <!-- SEO Meta Tags (High Search Volume Keywords) -->
+  <meta name="description"
+    content="Free online Minecraft skin pose maker and 3D character renderer. Pose your skin, equip held items, customize studio lighting, and export 4K HD renders right in your browser without Blender." />
+  <meta name="keywords"
+    content="minecraft skin pose, free minecraft rig, web character render, minecraft 3d render online, minecraft skin posing tool, minecraft thumbnail pose maker, free 3d minecraft rig, bobj character render, blockrig studio, minecraft character poser, pose minecraft skin online" />
+  <meta name="author" content="Bay4lly" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#38bdf8" />
 
-    <!-- Twitter / Discord Large Card Banner -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:domain" content="blockrig.site" />
-    <meta name="twitter:url" content="https://blockrig.site/" />
-    <meta name="twitter:title" content="BlockRig Studio - 3D Minecraft Character Posing & Rigging" />
-    <meta name="twitter:description" content="Minecraft ve blok modelleri için web tabanlı 3D stüdyo. Karakterine poz ver, sahneler yarat ve yüksek çözünürlüklü render al!" />
-    <meta name="twitter:image" content="https://blockrig.site/og.png" />
+  <!-- Open Graph (Discord, Facebook, WhatsApp Social Banner) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://blockrig.site/" />
+  <meta property="og:site_name" content="BlockRig Studio" />
+  <meta property="og:title" content="BlockRig Studio — Free Minecraft Skin Pose & 3D Character Rig Online" />
+  <meta property="og:description"
+    content="Free online Minecraft skin poser & 3D character renderer. Create custom poses, hold items, and export 4K renders right in your browser!" />
+  <meta property="og:image" content="https://blockrig.site/og.png" />
+  <meta property="og:image:secure_url" content="https://blockrig.site/og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="BlockRig Studio - Free Minecraft Skin Pose & 3D Character Renderer" />
 
-    <!-- Modüler Stiller -->
-    <link rel="stylesheet" href="./css/webview-base.css" />
-    <link rel="stylesheet" href="./css/mobile-camera.css" />
-    <link rel="stylesheet" href="./css/render-modal.css" />
-    <link rel="stylesheet" href="./assets/index-CdTw-XHa.css" />
+  <!-- Twitter / Discord Large Card Banner -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:domain" content="blockrig.site" />
+  <meta name="twitter:url" content="https://blockrig.site/" />
+  <meta name="twitter:title" content="BlockRig Studio — Free Minecraft Skin Pose & 3D Character Rig" />
+  <meta name="twitter:description"
+    content="Free online Minecraft skin poser & 3D character renderer. Create custom poses, hold items, and export 4K renders right in your browser!" />
+  <meta name="twitter:image" content="https://blockrig.site/og.png" />
 
-    <!-- Temel Sistem ve Polyfill Modülleri (Sıralama önemlidir) -->
-    <script src="./js/error-handler.js"></script>
-    <script src="./js/offline-fetch.js"></script>
-    <script src="./js/mobile-camera.js"></script>
-    <script src="./js/render-modal.js"></script>
-    <script src="./js/boot-loader.js"></script>
+  <!-- Google Structured Data (JSON-LD WebApplication) -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "BlockRig Studio",
+      "url": "https://blockrig.site/",
+      "description": "Free web-based 3D Minecraft skin posing and character rendering studio. Pose custom skins, equip 3D items, and export 4K renders online without installation.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires WebGL",
+      "author": {
+        "@type": "Person",
+        "name": "Bay4lly"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 
-    <!-- Ana Uygulama Modülü -->
-    <script type="module" src="./assets/index-CwoIYu9Q.js"></script>
-  </head>
-  <body>
-    <!-- Açılış Yükleme Ekranı (Siyah ekran kalmasını engeller) -->
-    <div id="boot-loader">
-      <div class="spinner"></div>
-      <p class="loader-text">BlockRig Studio Yükleniyor...</p>
+  <!-- Modüler Stiller -->
+  <link rel="stylesheet" href="./css/webview-base.css" />
+  <link rel="stylesheet" href="./css/mobile-camera.css" />
+  <link rel="stylesheet" href="./css/render-modal.css" />
+  <link rel="stylesheet" href="./assets/index-CdTw-XHa.css" />
+
+  <!-- Temel Sistem ve Polyfill Modülleri (Sıralama önemlidir) -->
+  <script src="./js/error-handler.js"></script>
+  <script src="./js/offline-fetch.js"></script>
+  <script src="./js/mobile-camera.js"></script>
+  <script src="./js/render-modal.js"></script>
+  <script src="./js/boot-loader.js"></script>
+
+  <!-- Ana Uygulama Modülü -->
+  <script type="module" src="./assets/index-CwoIYu9Q.js"></script>
+</head>
+
+<body>
+  <!-- Açılış Yükleme Ekranı (Siyah ekran kalmasını engeller) -->
+  <div id="boot-loader">
+    <div class="spinner"></div>
+    <p class="loader-text">BlockRig Studio Loading...</p>
+  </div>
+
+  <!-- React Uygulama Kökü -->
+  <div id="root"></div>
+
+  <!-- Hızlı Kamera Butonu (Sağ altta 🎮) -->
+  <div id="cam-toggle-trigger" onclick="toggleCamControls()" title="Kamera Kontrollerini Aç/Kapat">🎮</div>
+
+  <!-- Mobil Kamera WASD & Ok Tuşları Kontrol Paneli -->
+  <div id="mobile-camera-controls">
+    <!-- 4 Yönlü D-Pad (W, A, S, D) -->
+    <div class="dpad-container">
+      <button class="cam-btn btn-up" onpointerdown="sendCamKey('w','KeyW',true)"
+        onpointerup="sendCamKey('w','KeyW',false)" onpointercancel="sendCamKey('w','KeyW',false)"
+        onpointerleave="sendCamKey('w','KeyW',false)">▲</button>
+
+      <button class="cam-btn btn-left" onpointerdown="sendCamKey('a','KeyA',true)"
+        onpointerup="sendCamKey('a','KeyA',false)" onpointercancel="sendCamKey('a','KeyA',false)"
+        onpointerleave="sendCamKey('a','KeyA',false)">◀</button>
+
+      <div class="dpad-center">CAM</div>
+
+      <button class="cam-btn btn-right" onpointerdown="sendCamKey('d','KeyD',true)"
+        onpointerup="sendCamKey('d','KeyD',false)" onpointercancel="sendCamKey('d','KeyD',false)"
+        onpointerleave="sendCamKey('d','KeyD',false)">▶</button>
+
+      <button class="cam-btn btn-down" onpointerdown="sendCamKey('s','KeyS',true)"
+        onpointerup="sendCamKey('s','KeyS',false)" onpointercancel="sendCamKey('s','KeyS',false)"
+        onpointerleave="sendCamKey('s','KeyS',false)">▼</button>
     </div>
 
-    <!-- React Uygulama Kökü -->
-    <div id="root"></div>
+    <!-- Yüksel / Alçal (E / Q) -->
+    <div class="elevation-container">
+      <button class="cam-btn" title="Yüksel (E)" onpointerdown="sendCamKey('e','KeyE',true)"
+        onpointerup="sendCamKey('e','KeyE',false)" onpointercancel="sendCamKey('e','KeyE',false)"
+        onpointerleave="sendCamKey('e','KeyE',false)">⏫</button>
+      <button class="cam-btn" title="Alçal (Q)" onpointerdown="sendCamKey('q','KeyQ',true)"
+        onpointerup="sendCamKey('q','KeyQ',false)" onpointercancel="sendCamKey('q','KeyQ',false)"
+        onpointerleave="sendCamKey('q','KeyQ',false)">⏬</button>
+    </div>
+  </div>
 
-    <!-- Hızlı Kamera Butonu (Sağ altta 🎮) -->
-    <div id="cam-toggle-trigger" onclick="toggleCamControls()" title="Kamera Kontrollerini Aç/Kapat">🎮</div>
-
-    <!-- Mobil Kamera WASD & Ok Tuşları Kontrol Paneli -->
-    <div id="mobile-camera-controls">
-      <!-- 4 Yönlü D-Pad (W, A, S, D) -->
-      <div class="dpad-container">
-        <button class="cam-btn btn-up"
-          onpointerdown="sendCamKey('w','KeyW',true)"
-          onpointerup="sendCamKey('w','KeyW',false)"
-          onpointercancel="sendCamKey('w','KeyW',false)"
-          onpointerleave="sendCamKey('w','KeyW',false)">▲</button>
-        
-        <button class="cam-btn btn-left"
-          onpointerdown="sendCamKey('a','KeyA',true)"
-          onpointerup="sendCamKey('a','KeyA',false)"
-          onpointercancel="sendCamKey('a','KeyA',false)"
-          onpointerleave="sendCamKey('a','KeyA',false)">◀</button>
-        
-        <div class="dpad-center">CAM</div>
-
-        <button class="cam-btn btn-right"
-          onpointerdown="sendCamKey('d','KeyD',true)"
-          onpointerup="sendCamKey('d','KeyD',false)"
-          onpointercancel="sendCamKey('d','KeyD',false)"
-          onpointerleave="sendCamKey('d','KeyD',false)">▶</button>
-        
-        <button class="cam-btn btn-down"
-          onpointerdown="sendCamKey('s','KeyS',true)"
-          onpointerup="sendCamKey('s','KeyS',false)"
-          onpointercancel="sendCamKey('s','KeyS',false)"
-          onpointerleave="sendCamKey('s','KeyS',false)">▼</button>
+  <!-- Render Önizleme ve Dışa Aktarma Modalı -->
+  <div id="render-preview-modal" class="render-modal-backdrop" onclick="if (event.target === this) closeRenderModal()">
+    <div class="render-modal-card">
+      <!-- Başlık Bölümü -->
+      <div class="render-modal-header">
+        <div class="render-header-left">
+          <div class="render-badge-icon">✨</div>
+          <div class="render-header-text">
+            <div class="render-modal-title" id="render-modal-title">Render Tamamlandı</div>
+            <div class="render-modal-subtitle" id="render-res-badge">1920 × 1080 • PNG</div>
+          </div>
+        </div>
+        <button class="render-close-btn" onclick="closeRenderModal()" aria-label="Close">✕</button>
       </div>
 
-      <!-- Yüksel / Alçal (E / Q) -->
-      <div class="elevation-container">
-        <button class="cam-btn"
-          title="Yüksel (E)"
-          onpointerdown="sendCamKey('e','KeyE',true)"
-          onpointerup="sendCamKey('e','KeyE',false)"
-          onpointercancel="sendCamKey('e','KeyE',false)"
-          onpointerleave="sendCamKey('e','KeyE',false)">⏫</button>
-        <button class="cam-btn"
-          title="Alçal (Q)"
-          onpointerdown="sendCamKey('q','KeyQ',true)"
-          onpointerup="sendCamKey('q','KeyQ',false)"
-          onpointercancel="sendCamKey('q','KeyQ',false)"
-          onpointerleave="sendCamKey('q','KeyQ',false)">⏬</button>
+      <!-- Görsel Önizleme (Şeffaf Dama Tahtası) -->
+      <div class="render-preview-container">
+        <div class="render-preview-checkerboard">
+          <img id="render-preview-img" src="" alt="Render Önizleme" />
+        </div>
+      </div>
+
+      <!-- PC İndirme Başarılı Bilgisi -->
+      <div class="render-pc-success-bar" style="display: none;">
+        <span class="check-icon">✓</span>
+        <span id="render-pc-success-text">Render hazırlandı ve bilgisayarınıza indirildi.</span>
+      </div>
+
+      <!-- Kaydedilen Dosya Konumu Bilgisi (Android/Mobil) -->
+      <div class="render-location-box" style="display: none;">
+        <div class="render-location-status">
+          <span class="render-status-dot"></span>
+          <span class="render-status-label" id="render-location-label">Varsayılan Klasöre Kaydedildi</span>
+        </div>
+        <div class="render-path-row">
+          <span class="render-folder-icon">📁</span>
+          <div class="render-path-text" id="render-saved-path">/storage/emulated/0/BlockRig/Renders/...</div>
+          <button class="render-copy-btn" id="render-copy-btn" onclick="copyRenderPath()" title="Konumu Kopyala">
+            <span id="copy-btn-icon">📋</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Aksiyon Butonları -->
+      <div class="render-modal-actions">
+        <button class="render-action-btn btn-share" onclick="shareCurrentRender()">
+          <span class="btn-icon">📤</span>
+          <span class="btn-text">Paylaş</span>
+        </button>
+        <button class="render-action-btn btn-open" onclick="openCurrentRender()">
+          <span class="btn-icon">🖼️</span>
+          <span class="btn-text">Galeride Aç</span>
+        </button>
+        <button class="render-action-btn btn-dismiss" onclick="closeRenderModal()">
+          <span class="btn-text">Kapat</span>
+        </button>
       </div>
     </div>
+  </div>
 
-    <!-- Render Önizleme ve Dışa Aktarma Modalı -->
-    <div id="render-preview-modal" class="render-modal-backdrop" onclick="if (event.target === this) closeRenderModal()">
-      <div class="render-modal-card">
-        <!-- Başlık Bölümü -->
-        <div class="render-modal-header">
-          <div class="render-header-left">
-            <div class="render-badge-icon">✨</div>
-            <div class="render-header-text">
-              <div class="render-modal-title" id="render-modal-title">Render Tamamlandı</div>
-              <div class="render-modal-subtitle" id="render-res-badge">1920 × 1080 • PNG</div>
-            </div>
-          </div>
-          <button class="render-close-btn" onclick="closeRenderModal()" aria-label="Close">✕</button>
-        </div>
+  <!-- Gizlilik Politikası & Şartlar (AdSense & Google Play Uyumlu) -->
+  <a href="./privacy.html" id="privacy-link" target="_blank" rel="noopener">Privacy Policy • Gizlilik</a>
+</body>
 
-        <!-- Görsel Önizleme (Şeffaf Dama Tahtası) -->
-        <div class="render-preview-container">
-          <div class="render-preview-checkerboard">
-            <img id="render-preview-img" src="" alt="Render Önizleme" />
-          </div>
-        </div>
-
-        <!-- PC İndirme Başarılı Bilgisi -->
-        <div class="render-pc-success-bar" style="display: none;">
-          <span class="check-icon">✓</span>
-          <span id="render-pc-success-text">Render hazırlandı ve bilgisayarınıza indirildi.</span>
-        </div>
-
-        <!-- Kaydedilen Dosya Konumu Bilgisi (Android/Mobil) -->
-        <div class="render-location-box" style="display: none;">
-          <div class="render-location-status">
-            <span class="render-status-dot"></span>
-            <span class="render-status-label" id="render-location-label">Varsayılan Klasöre Kaydedildi</span>
-          </div>
-          <div class="render-path-row">
-            <span class="render-folder-icon">📁</span>
-            <div class="render-path-text" id="render-saved-path">/storage/emulated/0/BlockRig/Renders/...</div>
-            <button class="render-copy-btn" id="render-copy-btn" onclick="copyRenderPath()" title="Konumu Kopyala">
-              <span id="copy-btn-icon">📋</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Aksiyon Butonları -->
-        <div class="render-modal-actions">
-          <button class="render-action-btn btn-share" onclick="shareCurrentRender()">
-            <span class="btn-icon">📤</span>
-            <span class="btn-text">Paylaş</span>
-          </button>
-          <button class="render-action-btn btn-open" onclick="openCurrentRender()">
-            <span class="btn-icon">🖼️</span>
-            <span class="btn-text">Galeride Aç</span>
-          </button>
-          <button class="render-action-btn btn-dismiss" onclick="closeRenderModal()">
-            <span class="btn-text">Kapat</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Gizlilik Politikası & Şartlar (AdSense & Google Play Uyumlu) -->
-    <a href="./privacy.html" id="privacy-link" target="_blank" rel="noopener">Privacy Policy • Gizlilik</a>
-  </body>
 </html>
